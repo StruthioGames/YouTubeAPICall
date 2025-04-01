@@ -6,10 +6,10 @@ namespace YoutubeDataCall
 {
     public class Program
     {
-        private const string CHANNEL_NAME = "@Letsplay";
+        private const string CHANNEL_NAME = "@AsmonTV";
         private const string NUMBER_OF_VIDEOS = "100";
-        private const string START_DATE = "2020-01-01T00:00:00Z";
-        private const string END_DATE = "2026-01-01T00:00:00Z";
+        private const string START_DATE = "2025-03-25T00:00:00Z";
+        private const string END_DATE = "2025-04-01T00:00:00Z";
 
         private static string? API_KEY;
         static async Task Main()
@@ -19,6 +19,7 @@ namespace YoutubeDataCall
                 .Build();
 
             API_KEY = configuration["YouTube:API_KEY"];
+            if (string.IsNullOrEmpty(API_KEY)) Console.WriteLine("API_KEY not found in appsettings.json");
 
             // Get the channel ID from the channel name
             string? channelId = await GetChannelIdAsync(CHANNEL_NAME);
